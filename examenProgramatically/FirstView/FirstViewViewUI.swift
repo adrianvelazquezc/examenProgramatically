@@ -173,6 +173,8 @@ class FirstViewViewUI: UIView{
         textFieldContainer.addSubview(fieldText)
         mainContainer.addSubview(secondTitle)
         mainContainer.addSubview(firstCollection)
+        mainContainer.addSubview(thirdTitle)
+        mainContainer.addSubview(secondCollection)
     }
     
     func setConstraints(){
@@ -226,18 +228,40 @@ class FirstViewViewUI: UIView{
             firstCollection.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             firstCollection.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             firstCollection.heightAnchor.constraint(equalToConstant: 120),
-            firstCollection.bottomAnchor.constraint(equalTo: mainContainer.bottomAnchor, constant: -10),
+            
+            thirdTitle.topAnchor.constraint(equalTo: firstCollection.bottomAnchor, constant: 15),
+            thirdTitle.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            thirdTitle.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            
+            secondCollection.topAnchor.constraint(equalTo: thirdTitle.bottomAnchor, constant: 10),
+            secondCollection.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            secondCollection.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            secondCollection.heightAnchor.constraint(equalToConstant: 150),
+            secondCollection.bottomAnchor.constraint(equalTo: mainContainer.bottomAnchor, constant: -10),
         ])
     }
 }
 extension FirstViewViewUI: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return firstElementsImage.count
+        if collectionView.tag == 0 {
+            return firstElementsImage.count
+        }
+        return secondElementsImage.count
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let collection = collectionView.dequeueReusableCell(withReuseIdentifier: booksCollectionCell.identifier, for: indexPath) as! booksCollectionCell
-        collection.posterPicture.image = UIImage(named: firstElementsImage[indexPath.row])
-        return collection
+        if collectionView.tag == 0 {
+            let collection = collectionView.dequeueReusableCell(withReuseIdentifier: booksCollectionCell.identifier, for: indexPath) as! booksCollectionCell
+            collection.posterPicture.image = UIImage(named: firstElementsImage[indexPath.row])
+            return collection
+        }
+        else {
+            let collection = collectionView.dequeueReusableCell(withReuseIdentifier: booksCollectionCell.identifier, for: indexPath) as! booksCollectionCell
+            collection.posterPicture.image = UIImage(named: secondElementsImage[indexPath.row])
+            return collection
+        }
     }
+    
+    
 }
