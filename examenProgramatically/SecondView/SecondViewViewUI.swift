@@ -15,21 +15,7 @@ protocol SecondViewViewUIDelegate {
 class SecondViewViewUI: UIView{
     var delegate: SecondViewViewUIDelegate?
     var navigationController: UINavigationController?
-    
-    private lazy var scrollView: UIScrollView = {
-        let view = UIScrollView()
-        view.backgroundColor = UIColor.clear
-        view.showsHorizontalScrollIndicator = false
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    
-    lazy private var mainContainer: UIView = {
-        let view = UIView()
-        view.backgroundColor = .clear
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
+    let mediaArray = ["Icon_Facebook", "Icon_Apple", "Icon_Google"]
     
     lazy private var navigationTitle: custom_NavigationBar = {
         let title = custom_NavigationBar(titleText: "Home")
@@ -98,6 +84,39 @@ class SecondViewViewUI: UIView{
         return button
     }()
     
+    lazy private var firstSeparatorView: UIView = {
+        let view = UIView(frame: .zero)
+        view.backgroundColor = .black
+        view.clipsToBounds = true
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    lazy private var separatorLabel: UILabel = {
+        let title = UILabel()
+        title.attributedText = getDecorativeText(text: "ó")
+        title.translatesAutoresizingMaskIntoConstraints = false
+        title.textAlignment = .right
+        return title
+    }()
+    
+    lazy private var secondSeparatorView: UIView = {
+        let view = UIView(frame: .zero)
+        view.backgroundColor = .black
+        view.clipsToBounds = true
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    lazy private var imageStack: UIStackView = {
+        let stack = UIStackView()
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.axis = .horizontal
+        stack.spacing = 15
+        stack.distribution = .fillProportionally
+        return stack
+    }()
+    
     public convenience init(
         navigation: UINavigationController,
         delegate: SecondViewViewUIDelegate){
@@ -120,13 +139,26 @@ class SecondViewViewUI: UIView{
     
     func setUI(){
         self.addSubview(navigationTitle)
-        self.addSubview(scrollView)
-        scrollView.addSubview(mainContainer)
-        mainContainer.addSubview(userMailTextField)
-        mainContainer.addSubview(userPasswordTextField)
-        mainContainer.addSubview(forgotLabel)
-        mainContainer.addSubview(createLabel)
-        mainContainer.addSubview(loginButton)
+        self.addSubview(userMailTextField)
+        self.addSubview(userPasswordTextField)
+        self.addSubview(forgotLabel)
+        self.addSubview(createLabel)
+        self.addSubview(loginButton)
+        self.addSubview(firstSeparatorView)
+        self.addSubview(separatorLabel)
+        self.addSubview(secondSeparatorView)
+        self.addSubview(imageStack)
+        for images in 0...mediaArray.count-1 {
+            let mediaPicture: UIImageView = {
+                let image = UIImageView()
+                image.translatesAutoresizingMaskIntoConstraints = false
+                image.contentMode = .scaleAspectFit
+                image.clipsToBounds = true
+                image.image = UIImage(named: mediaArray[images])
+                return image
+            }()
+            imageStack.addArrangedSubview(mediaPicture)
+        }
     }
     
     func setConstraints(){
@@ -135,25 +167,14 @@ class SecondViewViewUI: UIView{
             navigationTitle.leadingAnchor.constraint(equalTo: leadingAnchor),
             navigationTitle.trailingAnchor.constraint(equalTo: trailingAnchor),
             
-            scrollView.topAnchor.constraint(equalTo: navigationTitle.bottomAnchor),
-            scrollView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
-            
-            mainContainer.topAnchor.constraint(equalTo: scrollView.topAnchor),
-            mainContainer.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-            mainContainer.widthAnchor.constraint(equalTo: self.widthAnchor),
-            mainContainer.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-            mainContainer.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-            
-            userMailTextField.topAnchor.constraint(equalTo: mainContainer.topAnchor, constant: 20),
-            userMailTextField.leadingAnchor.constraint(equalTo: mainContainer.leadingAnchor, constant: 20),
-            userMailTextField.trailingAnchor.constraint(equalTo: mainContainer.trailingAnchor, constant: -20),
+            userMailTextField.topAnchor.constraint(equalTo: navigationTitle.bottomAnchor, constant: 20),
+            userMailTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+            userMailTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
             userMailTextField.heightAnchor.constraint(equalToConstant: 55),
             
             userPasswordTextField.topAnchor.constraint(equalTo: userMailTextField.bottomAnchor, constant: 20),
-            userPasswordTextField.leadingAnchor.constraint(equalTo: mainContainer.leadingAnchor, constant: 20),
-            userPasswordTextField.trailingAnchor.constraint(equalTo: mainContainer.trailingAnchor, constant: -20),
+            userPasswordTextField.leadingAnchor.constraint(equalTo: userMailTextField.leadingAnchor),
+            userPasswordTextField.trailingAnchor.constraint(equalTo: userMailTextField.trailingAnchor),
             userPasswordTextField.heightAnchor.constraint(equalToConstant: 55),
             
             forgotLabel.topAnchor.constraint(equalTo: userPasswordTextField.bottomAnchor, constant: 20),
@@ -168,6 +189,26 @@ class SecondViewViewUI: UIView{
             loginButton.leadingAnchor.constraint(equalTo: userPasswordTextField.leadingAnchor),
             loginButton.trailingAnchor.constraint(equalTo: userPasswordTextField.trailingAnchor),
             loginButton.heightAnchor.constraint(equalToConstant: 55),
+            
+            separatorLabel.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 20),
+            separatorLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            
+            firstSeparatorView.centerYAnchor.constraint(equalTo: separatorLabel.centerYAnchor),
+            firstSeparatorView.leadingAnchor.constraint(equalTo: userPasswordTextField.leadingAnchor, constant: 10),
+            firstSeparatorView.trailingAnchor.constraint(equalTo: separatorLabel.leadingAnchor, constant: -5),
+            firstSeparatorView.heightAnchor.constraint(equalToConstant: 1),
+            
+            
+            secondSeparatorView.centerYAnchor.constraint(equalTo: separatorLabel.centerYAnchor),
+            secondSeparatorView.leadingAnchor.constraint(equalTo: separatorLabel.trailingAnchor, constant: 5),
+            secondSeparatorView.trailingAnchor.constraint(equalTo: userPasswordTextField.trailingAnchor, constant: -10),
+            secondSeparatorView.heightAnchor.constraint(equalToConstant: 1),
+            
+            
+            imageStack.topAnchor.constraint(equalTo: separatorLabel.bottomAnchor, constant: 20),
+            imageStack.leadingAnchor.constraint(equalTo: userPasswordTextField.leadingAnchor, constant: 20),
+            imageStack.trailingAnchor.constraint(equalTo: userPasswordTextField.trailingAnchor, constant: -20),
+            imageStack.heightAnchor.constraint(equalToConstant: 55),
         ])
     }
 }
