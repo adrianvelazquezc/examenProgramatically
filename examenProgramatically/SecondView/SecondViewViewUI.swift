@@ -36,7 +36,7 @@ class SecondViewViewUI: UIView{
         let placeholderAttributes = [NSAttributedString.Key.foregroundColor: UIColor.lightGray,
                                      NSAttributedString.Key.font: UIFont(name: "Avenir", size: 20)]
         let placeholderText = "Correo Electronico"
-        textField.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: placeholderAttributes)
+        textField.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: placeholderAttributes as [NSAttributedString.Key : Any])
         return textField
     }()
     
@@ -53,7 +53,7 @@ class SecondViewViewUI: UIView{
         let placeholderAttributes = [NSAttributedString.Key.foregroundColor: UIColor.lightGray,
                                      NSAttributedString.Key.font: UIFont(name: "Avenir", size: 20)]
         let placeholderText = "Contraseña"
-        textField.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: placeholderAttributes)
+        textField.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: placeholderAttributes as [NSAttributedString.Key : Any])
         return textField
     }()
     

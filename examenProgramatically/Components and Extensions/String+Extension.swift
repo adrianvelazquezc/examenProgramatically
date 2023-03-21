@@ -23,7 +23,7 @@ public func getDecorativeText(text: String, color: UIColor = .black, fontName: S
     
     let multipleAttributes: [NSAttributedString.Key : Any] = [
         NSAttributedString.Key.foregroundColor: color,
-        NSAttributedString.Key.font: UIFont(name: fontName, size: fontSize) ?? UIFont(name: "Avenir", size: 20)
+        NSAttributedString.Key.font: UIFont(name: fontName, size: fontSize) ?? .systemFont(ofSize: 16, weight: .bold)
     ]
     
     let attributedString = NSMutableAttributedString(string: text, attributes: multipleAttributes)
