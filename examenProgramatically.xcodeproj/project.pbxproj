@@ -34,6 +34,9 @@
 		CEA94B0D29C93F4700CC8B7A /* SecondViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA94B0529C93F4700CC8B7A /* SecondViewInteractor.swift */; };
 		CEA94B0E29C93F4700CC8B7A /* SecondViewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA94B0629C93F4700CC8B7A /* SecondViewView.swift */; };
 		CEA94B0F29C93F4700CC8B7A /* SecondViewEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA94B0729C93F4700CC8B7A /* SecondViewEntity.swift */; };
+		CEA94B1229C93FFA00CC8B7A /* custom_NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA94B1129C93FFA00CC8B7A /* custom_NavigationBar.swift */; };
+		CEA94B1429C9401A00CC8B7A /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA94B1329C9401A00CC8B7A /* String+Extension.swift */; };
+		CEA94B1629C9405400CC8B7A /* booksCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA94B1529C9405400CC8B7A /* booksCollectionCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +69,9 @@
 		CEA94B0529C93F4700CC8B7A /* SecondViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewInteractor.swift; sourceTree = "<group>"; };
 		CEA94B0629C93F4700CC8B7A /* SecondViewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewView.swift; sourceTree = "<group>"; };
 		CEA94B0729C93F4700CC8B7A /* SecondViewEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewEntity.swift; sourceTree = "<group>"; };
+		CEA94B1129C93FFA00CC8B7A /* custom_NavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = custom_NavigationBar.swift; sourceTree = "<group>"; };
+		CEA94B1329C9401A00CC8B7A /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		CEA94B1529C9405400CC8B7A /* booksCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = booksCollectionCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +107,7 @@
 				CEA94AEF29C93F2500CC8B7A /* FirstView */,
 				CEA94ADE29C93F0B00CC8B7A /* SecondView */,
 				CEA94ADD29C93D1000CC8B7A /* Home */,
+				CEA94B1029C93FE000CC8B7A /* Components and Extensions */,
 				CEA94AB929C93CC100CC8B7A /* AppDelegate.swift */,
 				CEA94AC229C93CC400CC8B7A /* Assets.xcassets */,
 				CEA94AC429C93CC400CC8B7A /* LaunchScreen.storyboard */,
@@ -152,6 +159,16 @@
 				CEA94AF729C93F3200CC8B7A /* FirstViewEntity.swift */,
 			);
 			path = FirstView;
+			sourceTree = "<group>";
+		};
+		CEA94B1029C93FE000CC8B7A /* Components and Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CEA94B1129C93FFA00CC8B7A /* custom_NavigationBar.swift */,
+				CEA94B1329C9401A00CC8B7A /* String+Extension.swift */,
+				CEA94B1529C9405400CC8B7A /* booksCollectionCell.swift */,
+			);
+			path = "Components and Extensions";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -224,6 +241,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEA94B1229C93FFA00CC8B7A /* custom_NavigationBar.swift in Sources */,
 				CEA94AD629C93D0A00CC8B7A /* HomePresenter.swift in Sources */,
 				CEA94B0A29C93F4700CC8B7A /* SecondViewRouter.swift in Sources */,
 				CEA94B0829C93F4700CC8B7A /* SecondViewViewUI.swift in Sources */,
@@ -233,6 +251,7 @@
 				CEA94AFC29C93F3200CC8B7A /* FirstViewMain.swift in Sources */,
 				CEA94AD729C93D0A00CC8B7A /* HomeRouter.swift in Sources */,
 				CEA94AFF29C93F3200CC8B7A /* FirstViewEntity.swift in Sources */,
+				CEA94B1629C9405400CC8B7A /* booksCollectionCell.swift in Sources */,
 				CEA94B0E29C93F4700CC8B7A /* SecondViewView.swift in Sources */,
 				CEA94B0C29C93F4700CC8B7A /* SecondViewMain.swift in Sources */,
 				CEA94AFE29C93F3200CC8B7A /* FirstViewView.swift in Sources */,
@@ -242,6 +261,7 @@
 				CEA94ADB29C93D0A00CC8B7A /* HomeView.swift in Sources */,
 				CEA94AFD29C93F3200CC8B7A /* FirstViewInteractor.swift in Sources */,
 				CEA94AD529C93D0A00CC8B7A /* HomeViewUI.swift in Sources */,
+				CEA94B1429C9401A00CC8B7A /* String+Extension.swift in Sources */,
 				CEA94B0D29C93F4700CC8B7A /* SecondViewInteractor.swift in Sources */,
 				CEA94B0F29C93F4700CC8B7A /* SecondViewEntity.swift in Sources */,
 				CEA94AFB29C93F3200CC8B7A /* FirstViewProtocols.swift in Sources */,
